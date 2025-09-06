@@ -151,7 +151,7 @@
 .hamburger-line {
   width: 25px;
   height: 2px;
-  background: var(--text-dark);
+  background: var(--primary-purple);
   margin: 3px 0;
   transition: all 0.3s ease;
   transform-origin: center;
