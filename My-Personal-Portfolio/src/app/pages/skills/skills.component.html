@@ -1,0 +1,106 @@
+<!-- Skills Section -->
+<section id="skills" class="skills-section" [class.visible]="isVisible">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title">
+        <i class="fas fa-code"></i>
+        Technical Skills
+      </h2>
+      <p class="section-subtitle">Technologies and tools I work with</p>
+    </div>
+    
+    <!-- Skills Content -->
+    <div class="skills-content">
+      
+      <!-- Skill Categories -->
+      <div 
+        *ngFor="let category of skillCategories; let categoryIndex = index" 
+        class="skill-category"
+        [style.animation-delay.ms]="categoryIndex * 200"
+      >
+        
+        <!-- Category Header -->
+        <div class="category-header">
+          <div class="category-icon">
+            <i [class]="category.icon"></i>
+          </div>
+          <h3 class="category-title">{{ category.name }}</h3>
+        </div>
+        
+        <!-- Skills Grid -->
+        <div class="skills-grid">
+          <div 
+            *ngFor="let skill of category.skills; let skillIndex = index" 
+            class="skill-card"
+            [style.animation-delay.ms]="(categoryIndex * 200) + (skillIndex * 100)"
+          >
+            
+            <!-- Skill Header -->
+            <div class="skill-header">
+              <div class="skill-info">
+                <i [class]="skill.icon" class="skill-icon"></i>
+                <div class="skill-details">
+                  <h4 class="skill-name">{{ skill.name }}</h4>
+                  <span class="skill-level">{{ getSkillLabel(skill.level) }}</span>
+                </div>
+              </div>
+              <div class="skill-percentage">{{ skill.level }}%</div>
+            </div>
+            
+            <!-- Progress Bar -->
+            <div class="progress-container">
+              <div class="progress-track">
+                <div 
+                  class="progress-fill"
+                  [style.width]="getProgressWidth(skill.level)"
+                  [style.transition-delay.ms]="(categoryIndex * 200) + (skillIndex * 100) + 500"
+                ></div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+    
+    <!-- Additional Info -->
+    <div class="skills-footer">
+      <div class="learning-note">
+        <i class="fas fa-graduation-cap"></i>
+        <p>Always learning and staying updated with the latest technologies and best practices!</p>
+      </div>
+      
+      <div class="skill-stats">
+        <div class="stat-item">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Technologies</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Projects Built</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1</div>
+          <div class="stat-label">Year Experience</div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Background Elements -->
+  <div class="skills-background">
+    <div class="floating-icons">
+      <i class="fab fa-angular floating-icon"></i>
+      <i class="fab fa-node-js floating-icon"></i>
+      <i class="fab fa-js-square floating-icon"></i>
+      <i class="fas fa-database floating-icon"></i>
+      <i class="fab fa-git-alt floating-icon"></i>
+      <i class="fab fa-html5 floating-icon"></i>
+    </div>
+  </div>
+</section>

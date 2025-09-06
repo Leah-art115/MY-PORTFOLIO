@@ -1,0 +1,217 @@
+/* Hero Section Styles */
+.hero-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 70px; 
+  background: var(--background-light);
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--gradient);
+  opacity: 0.05;
+  z-index: 0;
+}
+
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.hero-content.loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Left Content */
+.hero-text {
+  padding-right: 20px;
+}
+
+.greeting {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: var(--text-medium);
+  font-weight: 500;
+}
+
+.wave-icon {
+  color: #FFD700;
+  animation: wave 2s ease-in-out infinite;
+}
+
+@keyframes wave {
+  0%, 50%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(-10deg); }
+  20% { transform: rotate(12deg); }
+  40% { transform: rotate(-4deg); }
+}
+
+.hero-name {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 15px;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 20px;
+  line-height: 1.3;
+}
+
+.hero-tagline {
+  font-size: 1.2rem;
+  color: var(--text-medium);
+  line-height: 1.6;
+  margin-bottom: 40px;
+  max-width: 90%;
+}
+
+.image-container {
+  width: 350px;
+  height: 350px;
+  margin: 0 auto;
+  border-radius: 15%;
+  border: 2px solid #ccc;  
+  overflow: hidden;          
+  background: #eee;          
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      
+  object-position: top;    
+  display: block;
+}
+
+/* Social Links */
+.social-links {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: var(--background-section);
+  color: var(--text-medium);
+  text-decoration: none;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px var(--shadow);
+}
+
+.social-link:hover {
+  background: var(--accent-purple);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px var(--shadow);
+}
+
+/* Action Buttons */
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-buttons button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .hero-text {
+    padding-right: 0;
+    padding-bottom: 20px;
+  }
+
+  .hero-image {
+    order: 2;
+  }
+
+  .hero-text {
+    order: 1;
+  }
+
+  .image-container {
+    width: 250px;
+    height: 250px;
+  }
+
+  .hero-name {
+    font-size: 2.5rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    max-width: 100%;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+
+  .hero-buttons {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-container {
+    width: 200px;
+    height: 200px;
+  }
+
+  .hero-name {
+    font-size: 2rem;
+  }
+
+  .hero-title {
+    font-size: 1.2rem;
+  }
+}

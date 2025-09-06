@@ -1,0 +1,86 @@
+<!-- Hero Section -->
+<section id="hero" class="hero-section">
+  <div class="container">
+    <div class="hero-content" [class.loaded]="isLoaded">
+      
+      <!-- Left Content -->
+      <div class="hero-text">
+        <div class="greeting fade-in">
+          <i class="fas fa-hand-wave wave-icon"></i>
+          <span>Hello, I'm</span>
+        </div>
+        
+        <h1 class="hero-name slide-up">{{ fullName }}</h1>
+        
+        <h2 class="hero-title slide-up">{{ title }}</h2>
+        
+        <p class="hero-tagline slide-up">{{ tagline }}</p>
+        
+        <!-- Social Links -->
+        <div class="social-links slide-up">
+          <a 
+            *ngFor="let social of socialLinks" 
+            [href]="social.url" 
+            [title]="social.name"
+            class="social-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i [class]="social.icon"></i>
+          </a>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="hero-buttons slide-up">
+          <button 
+            class="btn-primary"
+            (click)="scrollToSection('projects')"
+          >
+            <i class="fas fa-briefcase"></i>
+            View Projects
+          </button>
+          
+          <button 
+            class="btn-outline"
+            (click)="downloadCV()"
+          >
+            <i class="fas fa-download"></i>
+            Download CV
+          </button>
+        </div>
+      </div>
+      
+      <!-- Right Content Profile Image -->
+      <div class="hero-image">
+        <div class="image-container ">
+          <img 
+            [src]="profileImage" 
+            [alt]="fullName + ' Profile Picture'"
+            class="profile-img"
+          >
+          <div class="image-glow"></div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="decorative-shapes">
+          <div class="shape shape-1"></div>
+          <div class="shape shape-2"></div>
+          <div class="shape shape-3"></div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <!-- <div class="scroll-indicator" (click)="scrollToSection('about')">
+      <div class="scroll-text">
+        <span>Scroll Down</span>
+        <i class="fas fa-arrow-down"></i>
+      </div>
+    </div> -->
+    
+  </div>
+  
+  <!-- Background Gradient -->
+  <div class="hero-background"></div>
+</section>

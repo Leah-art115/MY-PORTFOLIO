@@ -1,0 +1,127 @@
+<footer class="footer-section">
+  <!-- Background -->
+  <div class="footer-background"></div>
+
+  <!-- Main Footer Content -->
+  <div class="container">
+    <div class="footer-content">
+      
+      <!-- About Section -->
+      <div class="footer-column fade-in">
+        <div class="footer-brand">
+          <div class="brand-icon">
+            <i class="fas fa-code"></i>
+          </div>
+          <h3 class="brand-name">{{developerName}}</h3>
+        </div>
+        <p class="footer-description">
+          {{aboutText}}
+        </p>
+        <div class="footer-social-links">
+          <a *ngFor="let social of socialLinks" 
+             [href]="social.url" 
+             [title]="social.name"
+             target="_blank" 
+             rel="noopener noreferrer"
+             class="footer-social-link">
+            <i [class]="social.icon"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-column slide-up">
+        <h3 class="footer-heading">Quick Links</h3>
+        <ul class="footer-links">
+          <li *ngFor="let link of quickLinks">
+            <button 
+               *ngIf="link.section; else externalLink"
+               (click)="scrollToSection(link.section)"
+               class="footer-link footer-link-button">
+              <i class="fas fa-chevron-right"></i>
+              {{link.title}}
+            </button>
+            <ng-template #externalLink>
+              <a [href]="link.url" 
+                 [routerLink]="link.route"
+                 class="footer-link">
+                <i class="fas fa-chevron-right"></i>
+                {{link.title}}
+              </a>
+            </ng-template>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-column slide-up">
+        <h3 class="footer-heading">Services</h3>
+        <ul class="footer-services">
+          <li *ngFor="let service of services" class="footer-service">
+            <i [class]="service.icon"></i>
+            <span>{{service.name}}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-column slide-up">
+        <h3 class="footer-heading">Get In Touch</h3>
+        <div class="footer-contact">
+          <div *ngFor="let contact of contactInfo" class="contact-item">
+            <div class="contact-icon">
+              <i [class]="contact.icon"></i>
+            </div>
+            <div class="contact-info">
+              <span class="contact-label">{{contact.label}}</span>
+              <a *ngIf="contact.link; else plainText" 
+                 [href]="contact.link" 
+                 class="contact-value">
+                {{contact.value}}
+              </a>
+              <ng-template #plainText>
+                <span class="contact-value">{{contact.value}}</span>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        
+        <!-- Copyright -->
+        <div class="copyright">
+          <p class="copyright-text">
+            © {{currentYear}} {{developerName}}. All rights reserved.
+          </p>
+          <p class="tech-stack">
+            Built with ❤️ using Angular & CSS
+          </p>
+        </div>
+
+        <!-- Footer Links -->
+        <div class="footer-bottom-links">
+          <a *ngFor="let link of footerLinks" 
+             [href]="link.url"
+             [routerLink]="link.route"
+             class="footer-bottom-link">
+            {{link.title}}
+          </a>
+        </div>
+
+        <!-- Back to Top Button -->
+        <button 
+          (click)="scrollToTop()"
+          class="back-to-top"
+          title="Back to Top">
+          <i class="fas fa-chevron-up"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+</footer>

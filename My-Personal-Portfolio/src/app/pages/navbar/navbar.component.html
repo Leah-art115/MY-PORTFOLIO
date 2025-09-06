@@ -1,0 +1,56 @@
+<!-- Sticky Navigation Bar -->
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="nav-container">
+    
+    <!-- Logo -->
+    <div class="nav-brand">
+      <a href="#hero" class="brand-link">
+        <i class="fas fa-code brand-icon"></i>
+        <span class="brand-text">Leah's Portfolio</span>
+      </a>
+    </div>
+
+    <!-- Desktop Navigation Links -->
+    <ul class="nav-menu" [class.active]="isMenuOpen">
+      <li class="nav-item" *ngFor="let item of navItems">
+        <a 
+          [href]="item.href" 
+          class="nav-link"
+          (click)="scrollToSection(item.href, $event)"
+        >
+          <i [class]="item.icon"></i>
+          <span>{{ item.label }}</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Theme Toggle & Mobile Menu -->
+    <div class="nav-actions">
+      <!-- Theme Toggle Button -->
+      <button 
+        class="theme-toggle" 
+        [class.dark]="isDarkMode"
+        (click)="onThemeToggle()" 
+        [title]="themeTitle"
+      >
+        <i [class]="themeIcon"></i>
+      </button>
+
+      <!-- Mobile Menu Hamburger -->
+      <button 
+        class="mobile-toggle" 
+        [class.active]="isMenuOpen"
+        (click)="toggleMenu()"
+        aria-label="Toggle Menu"
+      >
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+
+  </div>
+</nav>
+
+<!-- Mobile Menu Overlay -->
+<div class="mobile-overlay" [class.active]="isMenuOpen" (click)="closeMenu()"></div>

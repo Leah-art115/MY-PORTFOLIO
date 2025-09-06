@@ -1,0 +1,233 @@
+<!-- Blog Section -->
+<section id="blog" class="blog-section" [class.visible]="isVisible">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title">
+        <i class="fas fa-blog"></i>
+        Tech Blog & Events
+      </h2>
+      <p class="section-subtitle">
+        My journey through tech events, insights, and continuous learning
+      </p>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="loading" class="loading-state">
+      <div class="loading-spinner">
+        <i class="fas fa-spinner fa-spin"></i>
+      </div>
+      <p>Loading blog posts...</p>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error && !loading" class="error-state">
+      <div class="error-icon">
+        <i class="fas fa-exclamation-triangle"></i>
+      </div>
+      <h3>Oops! Something went wrong</h3>
+      <p>{{ error }}</p>
+      <button class="btn-primary" (click)="retryLoading()">
+        <i class="fas fa-redo"></i>
+        Try Again
+      </button>
+    </div>
+
+    <!-- Blog Content (show when not loading and no error) -->
+    <div *ngIf="!loading && !error">
+      
+      <!-- Featured Posts Section -->
+      <div *ngIf="getFeaturedPosts().length > 0" class="featured-section">
+        <h3 class="featured-title">
+          <i class="fas fa-star"></i>
+          Featured Posts
+        </h3>
+        <div class="featured-grid">
+          <article 
+            *ngFor="let post of getFeaturedPosts(); let i = index" 
+            class="featured-post"
+            [style.animation-delay.ms]="i * 200"
+            (click)="openPost(post)"
+          >
+            <div class="featured-image">
+              <img [src]="post.featuredImage" [alt]="post.title">
+              <div class="featured-overlay">
+                <div class="post-category" [style.background]="getCategoryById(post.category)?.color">
+                  <i [class]="getCategoryById(post.category)?.icon"></i>
+                  {{ getCategoryById(post.category)?.name }}
+                </div>
+              </div>
+            </div>
+            <div class="featured-content">
+              <h4 class="featured-post-title">{{ post.title }}</h4>
+              <p class="featured-excerpt">{{ post.excerpt }}</p>
+              <div class="featured-meta">
+                <span class="post-date">
+                  <i class="fas fa-calendar"></i>
+                  {{ formatDate(post.publishDate) }}
+                </span>
+                <span class="read-time">
+                  <i class="fas fa-clock"></i>
+                  {{ post.readTime }} min read
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <!-- Category Filter -->
+      <div class="category-filter">
+        <h3 class="filter-title">Browse by Category</h3>
+        <div class="filter-buttons">
+          <button
+            *ngFor="let category of categories"
+            [class]="'filter-btn ' + (activeCategory === category.id ? 'active' : '')"
+            (click)="filterByCategory(category.id)"
+            [style.--category-color]="category.color"
+          >
+            <i [class]="category.icon"></i>
+            <span>{{ category.name }}</span>
+            <span class="category-count">{{ category.count }}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Blog Posts Grid -->
+      <div class="blog-grid">
+        <article
+          *ngFor="let post of filteredPosts; let i = index"
+          class="blog-card"
+          [class.featured]="post.featured"
+          [style.animation-delay.ms]="i * 100"
+          (click)="openPost(post)"
+        >
+          
+          <!-- Post Image -->
+          <div class="post-image">
+            <img [src]="post.featuredImage" [alt]="post.title">
+            <div class="image-overlay">
+              <div class="overlay-content">
+                <button class="read-btn">
+                  <i class="fas fa-book-open"></i>
+                  Read More
+                </button>
+                <div class="share-buttons">
+                  <button 
+                    class="share-btn" 
+                    (click)="sharePost(post, 'twitter'); $event.stopPropagation()" 
+                    title="Share on Twitter"
+                  >
+                    <i class="fab fa-twitter"></i>
+                  </button>
+                  <button 
+                    class="share-btn" 
+                    (click)="sharePost(post, 'linkedin'); $event.stopPropagation()" 
+                    title="Share on LinkedIn"
+                  >
+                    <i class="fab fa-linkedin"></i>
+                  </button>
+                  <button 
+                    class="share-btn" 
+                    (click)="sharePost(post, 'copy'); $event.stopPropagation()" 
+                    title="Copy Link"
+                  >
+                    <i class="fas fa-link"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Category Badge -->
+            <div class="post-category-badge" [style.background]="getCategoryById(post.category)?.color">
+              <i [class]="getCategoryById(post.category)?.icon"></i>
+              {{ getCategoryById(post.category)?.name }}
+            </div>
+            
+            <!-- Featured Badge -->
+            <div *ngIf="post.featured" class="featured-badge">
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+
+          <!-- Post Content -->
+          <div class="post-content">
+            
+            <!-- Post Header -->
+            <div class="post-header">
+              <h3 class="post-title">{{ post.title }}</h3>
+              <p class="post-excerpt">{{ post.excerpt }}</p>
+            </div>
+
+            <!-- Event Info (if it's an event post) -->
+            <div *ngIf="post.eventName" class="event-info">
+              <div class="event-details">
+                <div class="event-item">
+                  <i class="fas fa-calendar-check"></i>
+                  <span>{{ post.eventName }}</span>
+                </div>
+                <div class="event-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>{{ post.eventLocation }}</span>
+                </div>
+                <div *ngIf="post.eventDate" class="event-item">
+                  <i class="fas fa-clock"></i>
+                  <span>{{ formatDate(post.eventDate) }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="post-tags">
+              <span 
+                *ngFor="let tag of post.tags" 
+                class="tag"
+              >
+                #{{ tag }}
+              </span>
+            </div>
+
+            <!-- Post Meta -->
+            <div class="post-meta">
+              <div class="meta-left">
+                <div class="author-info">
+                  <img [src]="post.author.avatar" [alt]="post.author.name" class="author-avatar">
+                  <span class="author-name">{{ post.author.name }}</span>
+                </div>
+              </div>
+              <div class="meta-right">
+                <span class="publish-date">{{ getTimeAgo(post.publishDate) }}</span>
+                <span class="read-time">
+                  <i class="fas fa-clock"></i>
+                  {{ post.readTime }} min
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </article>
+      </div>
+
+      <!-- Empty State (when no posts match filter) -->
+      <div *ngIf="filteredPosts.length === 0" class="empty-state">
+        <div class="empty-icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <h3>No posts found</h3>
+        <p>Try selecting a different category to see more posts.</p>
+        <button class="btn-secondary" (click)="filterByCategory('all')">
+          <i class="fas fa-list"></i>
+          View All Posts
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Background Pattern -->
+  <div class="blog-background">
+    <div class="pattern-hexagons"></div>
+  </div>
+</section>

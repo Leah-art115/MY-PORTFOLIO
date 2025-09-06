@@ -1,0 +1,20 @@
+{
+  "id": 1,
+  "title": "Angular Connect 2024: Key Takeaways and Future of Angular",
+  "excerpt": "My experience at Angular Connect 2024, covering the latest updates, new features, and networking with the Angular community.",
+  "content": "<h2>What an Amazing Experience!</h2><p>Angular Connect 2024 was absolutely incredible! Here are my key takeaways from this year's conference...</p><h3>New Angular Features</h3><p>The Angular team announced some exciting features coming in Angular 18:</p><ul><li>New Control Flow Syntax</li><li>Material 3 Design System</li><li>Improved SSR Performance</li></ul><h3>Community Highlights</h3><p>The networking opportunities were fantastic. I met developers from all over the world and learned about their unique challenges and solutions...</p><h3>Key Sessions</h3><p>Some sessions that stood out to me:</p><ul><li><strong>State Management in 2024</strong> - Deep dive into modern state management patterns</li><li><strong>Angular Performance</strong> - New optimization techniques</li><li><strong>Testing Strategies</strong> - Advanced testing patterns with Jest and Cypress</li></ul><p>Overall, this conference reinforced my passion for Angular and gave me so many ideas for future projects!</p>",
+  "featuredImage": "assets/blog/images/angular-connect-2024.jpg",
+  "category": "events",
+  "tags": ["Angular", "Conference", "Community", "Frontend", "JavaScript"],
+  "publishDate": "2024-08-15",
+  "readTime": 8,
+  "eventName": "Angular Connect 2024",
+  "eventLocation": "London, UK",
+  "eventDate": "2024-08-10",
+  "featured": true,
+  "slug": "angular-connect-2024-takeaways",
+  "author": {
+    "name": "Alex Johnson",
+    "avatar": "assets/images/profile-picture.jpg"
+  }
+}

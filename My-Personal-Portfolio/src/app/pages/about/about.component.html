@@ -1,0 +1,75 @@
+<!-- About Section -->
+<section id="about" class="about-section" [class.visible]="isVisible">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="section-header">
+      <h2 class="section-title">
+        <i class="fas fa-user"></i>
+        About Me
+      </h2>
+      <p class="section-subtitle">My journey as a self-taught developer</p>
+    </div>
+    
+    <!-- About Content -->
+    <div class="about-content">
+      
+      <!-- Story / Journey -->
+      <div class="about-story">
+        
+        <!-- My Story Card -->
+        <div class="story-card">
+          <div class="card-header">
+            <i class="fas fa-lightbulb story-icon"></i>
+            <h3>My Story</h3>
+          </div>
+          <p class="story-text">{{ aboutText }}</p>
+        </div>
+        
+        <!-- The Journey Card -->
+        <div class="story-card">
+          <div class="card-header">
+            <i class="fas fa-road story-icon"></i>
+            <h3>The Journey</h3>
+          </div>
+          <p class="story-text">{{ journeyText }}</p>
+        </div>
+        
+        <!-- Experience / Highlights Cards -->
+        <div class="about-highlights">
+          <div class="highlights-grid">
+            <div 
+              *ngFor="let highlight of highlights; let i = index" 
+              class="highlight-card"
+              [style.animation-delay.ms]="i * 200"
+            >
+              <div class="highlight-icon">
+                <i [class]="highlight.icon"></i>
+              </div>
+              <div class="highlight-content">
+                <h4 class="highlight-title">{{ highlight.title }}</h4>
+                <p class="highlight-description">{{ highlight.description }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Download CV Button -->
+        <!-- <div class="cv-section">
+          <button class="btn-primary cv-btn" (click)="downloadCV()">
+            <i class="fas fa-download"></i>
+            Download My CV
+          </button>
+        </div> -->
+        
+      </div>
+      
+    </div>
+    
+  </div>
+  
+  <!-- Background Pattern -->
+  <div class="about-background">
+    <div class="pattern-dots"></div>
+  </div>
+</section>

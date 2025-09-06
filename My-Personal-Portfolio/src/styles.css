@@ -1,0 +1,260 @@
+/* Global CSS Variables - Easy to change colors later */
+:root {
+  /* Light Mode Colors */
+  --primary-purple: #E6E6FA;      /* Lavender */
+  --secondary-purple: #DDA0DD;    /* Plum */
+  --accent-purple: #9370DB;       /* Medium Slate Blue */
+  --light-purple: #F8F8FF;        /* Ghost White */
+  --text-dark: #2D1B45;          /* Dark Purple */
+  --text-medium: #6B46C1;        /* Purple */
+  --background-light: #FFFFFF;    /* White */
+  --background-section: #FAFAFF; /* Very Light Purple */
+  --border-light: #E6E6FA;       /* Lavender */
+  --shadow: rgba(147, 112, 219, 0.1);
+  --gradient: linear-gradient(135deg, #E6E6FA 0%, #DDA0DD 100%);
+}
+
+[data-theme="dark"] {
+  /* Elegant Purple Dark Theme */
+  --primary-purple: #121212;        /* Deep Charcoal - Main Background */
+  --secondary-purple: #1e1e1e;      /* Darker Gray - Cards/Sections */
+  --accent-purple: #8a2be2;         /* Royal Purple - Primary Accent */
+  --light-purple: #cda4de;          /* Soft Lavender - Secondary Accent */
+  --text-dark: #eaeaea;             /* Soft White - Main Text */
+  --text-medium: #a0a0a0;           /* Muted Gray - Secondary Text */
+  --background-light: #121212;      /* Background Base */
+  --background-section: #1e1e1e;    /* Section Background */
+  --border-light: #2c2c2c;          /* Subtle Borders */
+  --shadow: rgba(0, 0, 0, 0.4);     /* Softer Shadow */
+  --gradient: linear-gradient(135deg, #8a2be2 0%, #cda4de 100%);
+}
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: var(--text-dark);
+  background-color: var(--background-light);
+  transition: all 0.3s ease;
+}
+
+/* Dark mode specific enhancements */
+[data-theme="dark"] body {
+  background-image: none; /* Clean, no patterns */
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Enhanced scrollbar for dark mode */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-section);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-purple);
+  border-radius: 4px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+  background: var(--accent-purple);
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.8s ease-out;
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Enhanced button styles with dark mode support */
+.btn-primary {
+  background: var(--gradient);
+  color: var(--text-dark);
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+[data-theme="dark"] .btn-primary {
+  background: var(--accent-purple);
+  color: #ffffff;
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px var(--shadow);
+}
+
+[data-theme="dark"] .btn-primary:hover {
+  box-shadow: 0 8px 30px rgba(6, 182, 212, 0.4);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--accent-purple);
+  border: 2px solid var(--accent-purple);
+  padding: 10px 28px;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-outline:hover {
+  background: var(--accent-purple);
+  color: white;
+  transform: translateY(-2px);
+}
+
+[data-theme="dark"] .btn-outline {
+  border-color: var(--accent-purple);
+  color: var(--accent-purple);
+}
+
+[data-theme="dark"] .btn-outline:hover {
+  background: var(--accent-purple);
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+}
+
+/* Enhanced card styles */
+.card {
+  background: var(--background-light);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 30px var(--shadow);
+  border: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .card {
+  background: var(--background-section);
+  border-color: var(--border-light);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px var(--shadow);
+}
+
+[data-theme="dark"] .card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border-color: var(--accent-purple);
+}
+
+/* Section styles */
+section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Dark mode text enhancements */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: var(--text-dark);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Enhanced gradients for dark mode */
+[data-theme="dark"] .section-title {
+  background: var(--accent-purple);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Beautiful glow effects for dark mode */
+[data-theme="dark"] .glow {
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+}
+
+[data-theme="dark"] .glow:hover {
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  section {
+    padding: 60px 0;
+  }
+  
+  .container {
+    padding: 0 15px;
+  }
+}
+
+/* Beautiful selection colors */
+::selection {
+  background: var(--accent-purple);
+  color: white;
+}
+
+[data-theme="dark"] ::selection {
+  background: var(--accent-purple);
+  color: #ffffff;
+}
+
+/* Focus styles for accessibility */
+[data-theme="dark"] *:focus-visible {
+  outline: 2px solid var(--accent-purple);
+  outline-offset: 2px;
+}

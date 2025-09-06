@@ -1,0 +1,153 @@
+<section id="certifications" class="certifications-section">
+  <div class="container">
+    
+    <!-- Section Header -->
+    <div class="section-header fade-in">
+      <h2 class="section-title">My Learning Journey and certifications</h2>
+      <p class="section-subtitle">
+        Continuous learning and self-improvement through hands-on courses and certifications
+      </p>
+      <!-- <div class="journey-stats">
+        <div class="stat-item">
+          <span class="stat-number">{{certifications.length}}</span>
+          <span class="stat-label">Certifications</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{{totalHoursLearned}}+</span>
+          <span class="stat-label">Hours Learned</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{{yearsOfLearning}}+</span>
+          <span class="stat-label">Years Learning</span>
+        </div>
+      </div> -->
+    </div>
+
+    <!-- Category Filter -->
+    <div class="category-filter slide-up">
+      <h3 class="filter-title">Browse by Category</h3>
+      <div class="filter-buttons">
+        <button 
+          *ngFor="let category of categories"
+          [class]="'filter-btn ' + (selectedCategory === category.key ? 'active' : '')"
+          (click)="filterByCategory(category.key)">
+          <i [class]="getCategoryIcon(category.key)"></i>
+          <span>{{category.label}}</span>
+          <span class="count">{{category.count}}</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Certifications Grid -->
+    <div class="certifications-grid">
+      <div *ngFor="let cert of filteredCertifications; let i = index; trackBy: trackByCertificationId"
+           class="cert-card slide-up"
+           [style.animation-delay]="getAnimationDelay(i)">
+        
+     <!-- Certificate Image -->
+<div class="cert-image-container">
+  <img [src]="cert.imageUrl" 
+       [alt]="cert.title" 
+       class="cert-image" 
+       loading="lazy"
+       (error)="onImageError($event)">
+  <div class="cert-overlay">
+    <button *ngIf="cert.credentialUrl" 
+            class="view-credential-btn"
+            (click)="viewCredential(cert.credentialUrl)">
+      <i class="fas fa-external-link-alt"></i>
+      View Credential
+    </button>
+  </div>
+</div>
+
+        <!-- Certificate Content -->
+        <div class="cert-content">
+          <div class="cert-header">
+            <h3 class="cert-title">{{cert.title}}</h3>
+            <div class="cert-meta">
+              <span class="cert-issuer">
+                <i class="fas fa-graduation-cap"></i>
+                {{cert.issuer}}
+              </span>
+              <span class="cert-date">
+                <i class="fas fa-calendar"></i>
+                {{formatDate(cert.dateEarned)}}
+              </span>
+            </div>
+          </div>
+
+          <!-- Updated Description Section -->
+          <div class="cert-description-wrapper">
+            <p class="cert-description" 
+               [class.expanded]="cert.isExpanded">
+              <span *ngIf="!cert.isExpanded">{{getTruncatedDescription(cert.description)}}</span>
+              <span *ngIf="cert.isExpanded">{{cert.description}}</span>
+            </p>
+            
+            <button *ngIf="shouldShowReadMore(cert.description)" 
+                    class="read-more-btn"
+                    (click)="toggleDescription(cert.id)">
+              <span *ngIf="!cert.isExpanded">
+                <i class="fas fa-chevron-down"></i>
+                Read More
+              </span>
+              <span *ngIf="cert.isExpanded">
+                <i class="fas fa-chevron-up"></i>
+                Read Less
+              </span>
+            </button>
+          </div>
+
+          <!-- Skills Learned -->
+          <div class="cert-skills">
+            <h4 class="skills-title">Skills Learned:</h4>
+            <div class="skills-list">
+              <span *ngFor="let skill of cert.skills" class="skill-badge">
+                {{skill}}
+              </span>
+            </div>
+          </div>
+
+          <!-- Category Badge -->
+          <div class="cert-category">
+            <span class="category-badge" [attr.data-category]="cert.category">
+              <i [class]="getCategoryIcon(cert.category)"></i>
+              {{cert.category | titlecase}}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Results -->
+    <div *ngIf="filteredCertifications.length === 0" class="no-results slide-up">
+      <i class="fas fa-search"></i>
+      <h3>No certifications found</h3>
+      <p>Try selecting a different category or check back later for new certifications!</p>
+    </div>
+
+    <!-- Call to Action -->
+    <div class="certifications-cta slide-up">
+      <h3>Continuous Learning</h3>
+      <p>
+        As a self-taught developer, I believe in continuous learning and staying updated with the latest technologies. 
+        Each certification represents hours of dedicated learning and hands-on practice.
+      </p>
+      <div class="cta-buttons">
+        <!-- <button class="btn-primary" (click)="scrollToSection('contact')">
+          <i class="fas fa-comments"></i>
+          Let's Work Together
+        </button>
+        <button class="btn-outline" (click)="scrollToSection('projects')">
+          <i class="fas fa-code"></i>
+          See My Projects
+        </button> -->
+      </div>
+    </div>
+
+  </div>
+  
+  <!-- Background Elements -->
+  <div class="certifications-background"></div>
+</section>
