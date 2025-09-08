@@ -60,7 +60,7 @@ export class SkillsComponent implements OnInit {
         { name: 'VS Code', icon: 'fas fa-code', level: 95, category: 'tools' },
         { name: 'Figma', icon: 'fab fa-figma', level: 75, category: 'tools' },
         { name: 'Docker', icon: 'fab fa-docker', level: 65, category: 'tools' },
-        { name: 'Linux', icon: 'fab fa-linux', level: 70, category: 'tools' },
+        // { name: 'Linux', icon: 'fab fa-linux', level: 70, category: 'tools' },
         { name: 'AWS Basics', icon: 'fab fa-aws', level: 60, category: 'tools' }
       ]
     }

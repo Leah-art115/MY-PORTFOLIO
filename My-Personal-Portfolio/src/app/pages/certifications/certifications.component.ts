@@ -29,7 +29,7 @@ export class CertificationsComponent implements OnInit {
     {
       id: 1,
       title: 'Software Developer Training Program',
-      issuer: 'Teach2Give',
+      issuer: 'Teach2Give Chuka Cohort 2',
       dateEarned: '2025-08-15',
       description: 'During my training at Teach2Give, I completed an intensive Full Stack Development program that focused on building scalable web applications using Angular for the front end, NestJS for the back end, and PostgreSQL with Prisma ORM for database management. The program emphasized clean architecture, API design, database modeling, and seamless integration across the stack. We began with a strong foundation in HTML, CSS, JavaScript, and TypeScript, gradually advancing to real-world application development where I gained hands-on experience creating complete, production-ready systems. In addition to technical skills, the program incorporated valuable soft skills sessions, including mock interviews, public speaking practice, and professional communication training, which strengthened my confidence and ability to articulate ideas effectively in both team and client settings.',
       imageUrl: 'assets/certificates/Teach2Give-software-development-certificate.jpg', 

@@ -58,7 +58,7 @@ export class ProjectsComponent implements OnInit {
       image: 'https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=500&h=300&fit=crop',
       category: 'fullstack',
       techStack: ['Angular', 'NestJS', 'PostgreSQL', 'TypeScript', 'Tailwind CSS', 'JWT'],
-      liveDemo: '',
+      liveDemo: 'http://localhost:4200/',
       githubUrl: '',
       featured: true,
       status: 'completed'
@@ -228,5 +228,10 @@ export class ProjectsComponent implements OnInit {
       case 'planned': return 'status-planned';
       default: return 'status-completed';
     }
+  }
+
+  // Track by function for better performance
+  trackByProjectId(index: number, project: Project): number {
+    return project.id;
   }
 }

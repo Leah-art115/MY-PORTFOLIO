@@ -49,29 +49,29 @@ export class FooterComponent implements OnInit {
   socialLinks: SocialLink[] = [
     {
       name: 'GitHub',
-      url: 'https://github.com/yourusername',
+      url: 'https://github.com/Leah-art115',
       icon: 'fab fa-github'
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/yourusername',
+      url: 'https://www.linkedin.com/in/leah-achieng-a3b8a9360/',
       icon: 'fab fa-linkedin-in'
     },
-    {
-      name: 'Twitter',
-      url: 'https://twitter.com/yourusername',
-      icon: 'fab fa-twitter'
-    },
+    // {
+    //   name: 'Twitter',
+    //   url: 'https://twitter.com/yourusername',
+    //   icon: 'fab fa-twitter'
+    // },
     {
       name: 'Email',
-      url: 'mailto:your.email@example.com',
+      url: 'mailto:olaachieng123@gmail.com',
       icon: 'fas fa-envelope'
     },
-    {
-      name: 'Instagram',
-      url: 'https://instagram.com/yourusername',
-      icon: 'fab fa-instagram'
-    }
+    // {
+    //   name: 'Instagram',
+    //   url: 'https://instagram.com/yourusername',
+    //   icon: 'fab fa-instagram'
+    // }
   ];
 
   // Quick Navigation Links
@@ -80,10 +80,11 @@ export class FooterComponent implements OnInit {
     { title: 'About', section: 'about' },
     { title: 'Portfolio', section: 'projects' },
     { title: 'Skills', section: 'skills' },
-    { title: 'Experience', section: 'experience' },
-    { title: 'Contact', section: 'contact' },
-    { title: 'Blog', route: '/blog' },
-    { title: 'Resume', url: '/assets/resume.pdf' }
+    { title: 'Certificates', section: 'certifications' },
+    // { title: 'Experience', section: 'experience' },
+    // { title: 'Contact', section: 'contact' },
+    // { title: 'Blog', route: '/blog' },
+    // { title: 'Resume', url: '/assets/resume.pdf' }
   ];
 
   // Services Offered

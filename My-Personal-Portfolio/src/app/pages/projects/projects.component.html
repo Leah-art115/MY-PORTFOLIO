@@ -1,5 +1,10 @@
-<!-- Projects Section -->
-<section id="projects" class="projects-section" [class.visible]="isVisible">
+<section id="projects" class="projects-section" [ngClass]="{'visible': isVisible}">
+  
+  <!-- Background Pattern -->
+  <div class="projects-background">
+    <div class="pattern-grid"></div>
+  </div>
+
   <div class="container">
     
     <!-- Section Header -->
@@ -9,18 +14,18 @@
         My Projects
       </h2>
       <p class="section-subtitle">
-        A showcase of my development journey and technical skills
+        A showcase of my development work, from full-stack applications to frontend interfaces
       </p>
     </div>
 
     <!-- Category Filter -->
     <div class="category-filter">
       <div class="filter-buttons">
-        <button
-          *ngFor="let category of categories"
-          [class]="'filter-btn ' + (activeCategory === category.id ? 'active' : '')"
-          (click)="filterByCategory(category.id)"
-        >
+        <button 
+          *ngFor="let category of categories" 
+          class="filter-btn"
+          [ngClass]="{'active': activeCategory === category.id}"
+          (click)="filterByCategory(category.id)">
           <i [class]="category.icon"></i>
           <span>{{ category.name }}</span>
           <span class="category-count">{{ category.count }}</span>
@@ -29,50 +34,26 @@
     </div>
 
     <!-- Projects Grid -->
-    <div class="projects-grid">
-      <div
-        *ngFor="let project of filteredProjects; let i = index"
+    <div class="projects-grid" *ngIf="filteredProjects.length > 0">
+      <div 
+        *ngFor="let project of filteredProjects; trackBy: trackByProjectId" 
         class="project-card"
-        [class.featured]="project.featured"
-        [style.animation-delay.ms]="i * 100"
-      >
+        [ngClass]="{'featured': project.featured}">
         
+        <!-- Featured Badge -->
+        <div *ngIf="project.featured" class="featured-badge">
+          <i class="fas fa-star"></i>
+          Featured
+        </div>
+
+        <!-- Status Badge -->
+        <div class="status-badge" [ngClass]="getStatusClass(project.status)">
+          {{ project.status | titlecase }}
+        </div>
+
         <!-- Project Image -->
         <div class="project-image">
-          <img [src]="project.image" [alt]="project.title + ' screenshot'">
-          <div class="image-overlay">
-            <div class="overlay-actions">
-              <!-- Live Demo Button -->
-              <!-- <button 
-                *ngIf="project.liveDemo"
-                class="action-btn demo-btn" 
-                (click)="openLink(project.liveDemo)"
-                title="View Live Demo"
-              >
-                <i class="fas fa-external-link-alt"></i>
-                Live Demo
-              </button> -->
-              <!-- GitHub Button -->
-              <!-- <button 
-                class="action-btn github-btn" 
-                (click)="openLink(project.githubUrl)"
-                title="View Source Code"
-              >
-                <i class="fab fa-github"></i>
-                GitHub
-              </button> -->
-            </div>
-          </div>
-          <!-- Featured Badge -->
-          <!-- <div *ngIf="project.featured" class="featured-badge">
-            <i class="fas fa-star"></i>
-            Featured
-          </div> -->
-
-          <!-- Status Badge -->
-          <div class="status-badge" [class]="getStatusClass(project.status)">
-            {{ project.status | titlecase }}
-          </div>
+          <img [src]="project.image" [alt]="project.title" loading="lazy">
         </div>
 
         <!-- Project Content -->
@@ -88,34 +69,30 @@
           <div class="tech-stack">
             <div class="tech-label">
               <i class="fas fa-tools"></i>
-              Tech Stack:
+              Tech Stack
             </div>
             <div class="tech-badges">
-              <span 
-                *ngFor="let tech of project.techStack" 
-                class="tech-badge"
-              >
+              <span *ngFor="let tech of project.techStack" class="tech-badge">
                 {{ tech }}
               </span>
             </div>
           </div>
 
-          <!-- Project Actions -->
+          <!-- Project Actions - ALWAYS VISIBLE -->
           <div class="project-actions">
-            <!-- Live Demo Link -->
             <button 
               *ngIf="project.liveDemo"
-              class="btn-primary demo-link" 
+              class="demo-link"
               (click)="openLink(project.liveDemo)"
-            >
+              type="button">
               <i class="fas fa-external-link-alt"></i>
               Live Demo
             </button>
-            <!-- GitHub Link -->
+            
             <button 
-              class="btn-secondary github-link" 
+              class="github-link"
               (click)="openLink(project.githubUrl)"
-            >
+              type="button">
               <i class="fab fa-github"></i>
               Source Code
             </button>
@@ -125,19 +102,12 @@
       </div>
     </div>
 
-    <!-- Empty State (when no projects match filter) -->
+    <!-- Empty State -->
     <div *ngIf="filteredProjects.length === 0" class="empty-state">
-      <div class="empty-icon">
-        <i class="fas fa-search"></i>
-      </div>
+      <i class="fas fa-search empty-icon"></i>
       <h3>No projects found</h3>
       <p>Try selecting a different category to see more projects.</p>
     </div>
 
-  </div>
-
-  <!-- Background Pattern -->
-  <div class="projects-background">
-    <div class="pattern-grid"></div>
   </div>
 </section>
