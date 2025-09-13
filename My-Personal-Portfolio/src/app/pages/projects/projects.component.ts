@@ -152,7 +152,21 @@ export class ProjectsComponent implements OnInit {
       githubUrl: 'https://github.com/Leah-art115/MY-PORTFOLIO',
       featured: false,
       status: 'completed'
-    }
+    },
+    {
+  id: 9,
+  title: 'SendIt Courier Service',
+  description: 'Full-stack courier management system with parcel tracking, driver assignment, and real-time delivery updates.',
+  longDescription: 'SendIt is a full-stack courier service application that streamlines parcel deliveries. It allows users to create and track shipments in real-time, while admins manage drivers and assign deliveries. Drivers can update locations and delivery statuses, with the system handling automated status updates. The platform includes role-based access (Admin, User, Driver), Google Maps integration for route tracking, and notifications for key parcel events. Built with Angular for the frontend, NestJS for the backend, and PostgreSQL with Prisma ORM for database management. Deployed using Vercel, Render, and Neon for a seamless cloud setup.',
+  image: 'courier-placeholder.png',
+  category: 'fullstack',
+  techStack: ['Angular', 'NestJS', 'PostgreSQL', 'Prisma'],
+  liveDemo: 'https://sendit-courier-service.vercel.app/',
+  githubUrl: 'https://github.com/Leah-art115/SENDIT-COURIER-SERVICE',
+  featured: false,
+  status: 'completed'
+}
+
   ];
 
   ngOnInit(): void {
