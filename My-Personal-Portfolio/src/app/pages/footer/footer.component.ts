@@ -67,6 +67,12 @@ export class FooterComponent implements OnInit {
       url: 'mailto:olaachieng123@gmail.com',
       icon: 'fas fa-envelope'
     },
+    {
+  name: 'Phone',
+  url: 'tel:+254704607226', 
+  icon: 'fas fa-phone'
+}
+
     // {
     //   name: 'Instagram',
     //   url: 'https://instagram.com/yourusername',

@@ -149,7 +149,7 @@ export class ProjectsComponent implements OnInit {
       category: 'frontend',
       techStack: ['Angular',  'Tailwind CSS', ],
       liveDemo: 'https://leah-achiengs-portfolio.vercel.app/',
-      githubUrl: '',
+      githubUrl: 'https://github.com/Leah-art115/MY-PORTFOLIO',
       featured: false,
       status: 'completed'
     }
